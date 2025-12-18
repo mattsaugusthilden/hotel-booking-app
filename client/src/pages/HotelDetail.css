@@ -1,0 +1,254 @@
+.hotel-detail-page {
+  padding: 60px 20px;
+  min-height: calc(100vh - 80px);
+  background: #fafafa;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 32px;
+  padding: 8px 0;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+  color: #c9a961;
+}
+
+.hotel-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 60px;
+  background: #ffffff;
+  padding: 0;
+  border: 1px solid #e8e8e8;
+}
+
+.hotel-image-large {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+.hotel-image-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotel-header-info {
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hotel-header-info h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.hotel-header-info .hotel-location {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.hotel-header-info .hotel-rating {
+  font-size: 18px;
+  color: #c9a961;
+  font-weight: 500;
+  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+}
+
+.hotel-header-info .hotel-description {
+  color: #666;
+  line-height: 1.8;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+}
+
+.booking-filters {
+  background: #ffffff;
+  padding: 40px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 50px;
+}
+
+.booking-filters h2 {
+  margin-bottom: 32px;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.date-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.rooms-section {
+  background: #ffffff;
+  padding: 50px 40px;
+  border: 1px solid #e8e8e8;
+}
+
+.rooms-section h2 {
+  margin-bottom: 40px;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.room-card {
+  padding: 32px;
+  border: 1px solid #e8e8e8;
+}
+
+.room-info h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+.room-number {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.room-occupancy {
+  color: #666;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+}
+
+.room-amenities {
+  color: #666;
+  font-size: 13px;
+  margin-bottom: 24px;
+  line-height: 1.7;
+  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+}
+
+.room-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.price-amount {
+  font-size: 36px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+}
+
+.price-label {
+  color: #999;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.no-rooms {
+  text-align: center;
+  padding: 60px 40px;
+  color: #666;
+  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .hotel-detail-page {
+    padding: 40px 20px;
+  }
+
+  .hotel-header {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hotel-image-large {
+    height: 300px;
+  }
+
+  .hotel-header-info {
+    padding: 32px 24px;
+  }
+
+  .hotel-header-info h1 {
+    font-size: 32px;
+  }
+
+  .booking-filters {
+    padding: 32px 24px;
+  }
+
+  .booking-filters h2 {
+    font-size: 28px;
+  }
+
+  .date-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .rooms-section {
+    padding: 32px 24px;
+  }
+
+  .rooms-section h2 {
+    font-size: 28px;
+  }
+
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

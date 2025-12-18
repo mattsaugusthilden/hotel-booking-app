@@ -1,0 +1,206 @@
+.home {
+  min-height: calc(100vh - 80px);
+}
+
+.hero {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 120px 20px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-image: url('https://picsum.photos/seed/dracula-castle-haunted-gothic/1920/1080');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(26, 26, 26, 0.85) 50%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 56px;
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 48px;
+  color: #e0e0e0;
+  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-form {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+}
+
+.search-input {
+  flex: 1;
+  padding: 18px 24px;
+  border: none;
+  border-radius: 0;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+.search-input::placeholder {
+  color: #999;
+  text-transform: none;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-btn {
+  padding: 18px 40px;
+  white-space: nowrap;
+  border-radius: 0;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+  background: #2d2d2d;
+}
+
+.features {
+  padding: 100px 20px;
+  background: #fafafa;
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 60px;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 0;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  border: 1px solid #e8e8e8;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #d0d0d0;
+}
+
+.feature-icon {
+  font-size: 40px;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.feature-card h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .search-form {
+    flex-direction: column;
+    border: none;
+  }
+
+  .search-input {
+    border: 1px solid #e8e8e8;
+    margin-bottom: 0;
+  }
+
+  .search-btn {
+    width: 100%;
+    border: 1px solid #1a1a1a;
+  }
+
+  .features {
+    padding: 60px 20px;
+  }
+
+  .features h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
