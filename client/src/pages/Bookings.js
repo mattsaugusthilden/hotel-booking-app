@@ -37,7 +37,7 @@ const Bookings = () => {
 
     try {
       await api.delete(`/bookings/${bookingId}`);
-      setBookings(bookings.filter((b) => b.id !== bookingId));
+      setBookings(Array.isArray(bookings) ? bookings.filter((b) => b.id !== bookingId) : []);
     } catch (err) {
       alert(err.response?.data?.error || 'Failed to cancel booking');
     }
