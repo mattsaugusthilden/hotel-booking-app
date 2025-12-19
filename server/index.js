@@ -89,6 +89,15 @@ const authenticateToken = (req, res, next) => {
 };
 
 // Auth Routes
+// Health check endpoints
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'Hotel Booking API is running' });
+});
+
+app.get('/api', (req, res) => {
+  res.json({ status: 'ok', message: 'Hotel Booking API is running', endpoints: ['/api/hotels', '/api/rooms', '/api/auth/login', '/api/auth/register', '/api/seed'] });
+});
+
 app.post('/api/auth/register', async (req, res) => {
   const { email, password, name } = req.body;
 
@@ -592,6 +601,18 @@ app.post('/api/seed', (req, res) => {
         );
       }
     });
+  });
+});
+
+// Also allow GET for easier browser access to seed endpoint
+app.get('/api/seed', (req, res) => {
+  // Redirect to POST handler - reuse the same logic
+  const originalMethod = req.method;
+  req.method = 'POST';
+  // Call the POST handler
+  app._router.handle(req, res, () => {
+    // If POST handler doesn't exist, handle here
+    res.status(405).json({ error: 'Use POST method or visit /api/seed directly' });
   });
 });
 
