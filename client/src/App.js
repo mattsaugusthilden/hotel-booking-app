@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
+import ErrorBoundary from './components/ErrorBoundary';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Hotels from './pages/Hotels';
@@ -18,30 +19,32 @@ const PrivateRoute = ({ children }) => {
 
 function App() {
   return (
-    <LanguageProvider>
-      <AuthProvider>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/hotels" element={<Hotels />} />
-              <Route path="/hotels/:id" element={<HotelDetail />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route
-                path="/bookings"
-                element={
-                  <PrivateRoute>
-                    <Bookings />
-                  </PrivateRoute>
-                }
-              />
-            </Routes>
-          </div>
-        </Router>
-      </AuthProvider>
-    </LanguageProvider>
+    <ErrorBoundary>
+      <LanguageProvider>
+        <AuthProvider>
+          <Router>
+            <div className="App">
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/hotels" element={<Hotels />} />
+                <Route path="/hotels/:id" element={<HotelDetail />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route
+                  path="/bookings"
+                  element={
+                    <PrivateRoute>
+                      <Bookings />
+                    </PrivateRoute>
+                  }
+                />
+              </Routes>
+            </div>
+          </Router>
+        </AuthProvider>
+      </LanguageProvider>
+    </ErrorBoundary>
   );
 }
 
