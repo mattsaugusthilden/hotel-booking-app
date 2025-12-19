@@ -16,7 +16,14 @@ app.use(express.json());
 
 // Database setup
 const dbPath = path.join(__dirname, 'hotel_booking.db');
-const db = new sqlite3.Database(dbPath);
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error('Error opening database:', err);
+    process.exit(1);
+  } else {
+    console.log('Database connected successfully');
+  }
+});
 
 // Initialize database tables
 db.serialize(() => {
@@ -605,18 +612,27 @@ app.post('/api/seed', (req, res) => {
 });
 
 // Also allow GET for easier browser access to seed endpoint
+// Just return a message directing to POST
 app.get('/api/seed', (req, res) => {
-  // Redirect to POST handler - reuse the same logic
-  const originalMethod = req.method;
-  req.method = 'POST';
-  // Call the POST handler
-  app._router.handle(req, res, () => {
-    // If POST handler doesn't exist, handle here
-    res.status(405).json({ error: 'Use POST method or visit /api/seed directly' });
+  res.json({ 
+    message: 'To seed the database, use POST method or visit this URL with a tool like Postman/curl',
+    instruction: 'Use: curl -X POST https://your-url.railway.app/api/seed'
   });
 });
 
+// Error handling for uncaught exceptions
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  process.exit(1);
+});
+
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/`);
 });
 
