@@ -22,10 +22,12 @@ const Hotels = () => {
       setLoading(true);
       const params = city ? { city } : {};
       const response = await api.get('/hotels', { params });
-      setHotels(response.data);
+      // Ensure response.data is an array
+      setHotels(Array.isArray(response.data) ? response.data : []);
       setError(null);
     } catch (err) {
       setError('Failed to load hotels');
+      setHotels([]); // Set empty array on error
       console.error(err);
     } finally {
       setLoading(false);

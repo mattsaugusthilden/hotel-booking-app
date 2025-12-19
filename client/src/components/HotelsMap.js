@@ -101,9 +101,11 @@ const HotelsMap = () => {
   const fetchHotels = async () => {
     try {
       const response = await api.get('/hotels');
-      setHotels(response.data);
+      // Ensure response.data is an array
+      setHotels(Array.isArray(response.data) ? response.data : []);
     } catch (err) {
       console.error('Failed to load hotels for map:', err);
+      setHotels([]); // Set empty array on error
     } finally {
       setLoading(false);
     }
@@ -118,7 +120,8 @@ const HotelsMap = () => {
   }
 
   // Calculate center of all hotels (average of all coordinates)
-  const validHotels = hotels.filter(hotel => cityCoordinates[hotel.city]);
+  // Ensure hotels is an array before filtering
+  const validHotels = Array.isArray(hotels) ? hotels.filter(hotel => cityCoordinates[hotel.city]) : [];
   if (validHotels.length === 0) {
     return <div className="map-error">No hotels found</div>;
   }
