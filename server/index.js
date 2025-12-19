@@ -7,7 +7,8 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+// Railway will assign PORT automatically, or use default
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 // Middleware
