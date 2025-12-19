@@ -1,6 +1,6 @@
-# Hotel Booking App
+# Creepy Hotels Group
 
-A full-stack web application for booking hotel rooms with a modern React frontend and Node.js/Express backend.
+A full-stack web application for booking creepy hotel rooms with a modern React frontend and Node.js/Express backend.
 
 ## Features
 

@@ -9,27 +9,14 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-image: url('https://picsum.photos/seed/dracula-castle-haunted-gothic/1920/1080');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  min-height: 600px;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(26, 26, 26, 0.85) 50%, rgba(0, 0, 0, 0.8) 100%);
-  z-index: 0;
-}
+/* Overlay is now handled by HeroCarousel component */
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .hero-content h1 {
@@ -57,20 +44,26 @@
   max-width: 700px;
   margin: 0 auto;
   display: flex;
-  gap: 0;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
 }
 
 .search-input {
-  flex: 1;
+  width: 50%;
+  max-width: 350px;
   padding: 18px 24px;
-  border: none;
-  border-radius: 0;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
   font-size: 15px;
   font-family: 'Inter', sans-serif;
   color: #1a1a1a;
   background: #ffffff;
+  box-sizing: border-box;
+  height: 54px;
+  line-height: 1.5;
 }
 
 .search-input::placeholder {
@@ -85,8 +78,8 @@
 .search-btn {
   padding: 18px 40px;
   white-space: nowrap;
-  border-radius: 0;
-  background: #1a1a1a;
+  border-radius: 4px;
+  background: #ff0000;
   color: #ffffff;
   border: none;
   font-weight: 500;
@@ -95,10 +88,13 @@
   font-size: 14px;
   cursor: pointer;
   transition: background 0.3s ease;
+  box-sizing: border-box;
+  height: 54px;
+  line-height: 1.5;
 }
 
 .search-btn:hover {
-  background: #2d2d2d;
+  background: #000000;
 }
 
 .features {
@@ -127,34 +123,40 @@
 .feature-card {
   text-align: center;
   padding: 40px 30px;
-  border-radius: 0;
-  background: #ffffff;
+  border-radius: 8px;
+  background: #000000;
   transition: all 0.3s ease;
-  border: 1px solid #e8e8e8;
+  border: 1px solid #2d2d2d;
 }
 
 .feature-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  border-color: #d0d0d0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: #c9a961;
 }
 
 .feature-icon {
   font-size: 40px;
   margin-bottom: 24px;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .feature-card h3 {
   font-size: 22px;
   margin-bottom: 16px;
-  color: #1a1a1a;
+  color: #ffffff;
   font-family: 'Playfair Display', serif;
   font-weight: 600;
 }
 
+.feature-stars {
+  font-size: 20px;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
 .feature-card p {
-  color: #666;
+  color: #cccccc;
   line-height: 1.7;
   font-size: 15px;
   font-weight: 300;
@@ -176,10 +178,12 @@
 
   .search-form {
     flex-direction: column;
-    border: none;
+    gap: 12px;
   }
 
   .search-input {
+    width: 100%;
+    max-width: 100%;
     border: 1px solid #e8e8e8;
     margin-bottom: 0;
   }

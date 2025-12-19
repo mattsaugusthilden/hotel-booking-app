@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { getTranslation } from '../utils/translations';
+import HeroCarousel from '../components/HeroCarousel';
+import HotelsMap from '../components/HotelsMap';
 import './Home.css';
 
 const Home = () => {
@@ -22,6 +24,7 @@ const Home = () => {
   return (
     <div className="home">
       <div className="hero">
+        <HeroCarousel />
         <div className="hero-content">
           <h1>{t('homeTitle')}</h1>
           <p>{t('homeSubtitle')}</p>
@@ -64,8 +67,22 @@ const Home = () => {
               <h3>{t('homeEasyManagement')}</h3>
               <p>{t('homeEasyDesc')}</p>
             </div>
+            <div className="feature-card">
+              <div className="feature-icon">👻</div>
+              <h3>{t('homeHorrificGuarantee')}</h3>
+              <p>{t('homeHorrificDesc')}</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">💀</div>
+              <h3>{t('homePeopleDied')}</h3>
+              <p>{t('homePeopleDiedDesc')}</p>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className="container">
+        <HotelsMap />
       </div>
     </div>
   );

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#1a1a1a"/>
+  <!-- Pumpkin body -->
+  <ellipse cx="50" cy="60" rx="28" ry="32" fill="#ff6600"/>
+  <!-- Pumpkin top/stem -->
+  <path d="M 45 28 Q 50 20 55 28 L 52 35 Q 50 32 48 35 Z" fill="#2d5016"/>
+  <!-- Left eye (triangular) -->
+  <path d="M 40 50 L 35 60 L 45 60 Z" fill="#1a1a1a"/>
+  <!-- Right eye (triangular) -->
+  <path d="M 60 50 L 55 60 L 65 60 Z" fill="#1a1a1a"/>
+  <!-- Nose (triangular) -->
+  <path d="M 50 65 L 47 72 L 53 72 Z" fill="#1a1a1a"/>
+  <!-- Scary mouth with teeth -->
+  <path d="M 38 75 Q 35 80 38 82 Q 40 80 42 82 Q 44 80 46 82 Q 48 80 50 82 Q 52 80 54 82 Q 56 80 58 82 Q 60 80 62 82 Q 65 80 62 75" fill="#1a1a1a"/>
+  <!-- Teeth -->
+  <rect x="40" y="75" width="4" height="7" fill="#ffffff"/>
+  <rect x="48" y="75" width="4" height="7" fill="#ffffff"/>
+  <rect x="56" y="75" width="4" height="7" fill="#ffffff"/>
+  <!-- Pumpkin ridges/segments -->
+  <path d="M 30 45 Q 25 50 30 55" stroke="#ff5500" stroke-width="1.5" fill="none"/>
+  <path d="M 70 45 Q 75 50 70 55" stroke="#ff5500" stroke-width="1.5" fill="none"/>
+  <path d="M 35 40 Q 30 50 35 60" stroke="#ff5500" stroke-width="1.5" fill="none"/>
+  <path d="M 65 40 Q 70 50 65 60" stroke="#ff5500" stroke-width="1.5" fill="none"/>
+</svg>
+

@@ -15,17 +15,44 @@
 
 .search-bar {
   display: flex;
-  gap: 0;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
   margin-bottom: 50px;
   max-width: 700px;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
+  background: transparent;
+  border: none;
+}
+
+.search-bar .btn-primary {
+  height: 54px;
+  box-sizing: border-box;
+  line-height: 1.5;
+  padding: 18px 40px;
 }
 
 .search-bar .search-input {
-  flex: 1;
-  border: none;
-  border-radius: 0;
+  width: 50%;
+  max-width: 350px;
+  padding: 18px 24px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  background: #ffffff;
+  box-sizing: border-box;
+  height: 54px;
+  line-height: 1.5;
+}
+
+.search-bar .search-input::placeholder {
+  color: #999;
+  text-transform: none;
+}
+
+.search-bar .search-input:focus {
+  outline: none;
 }
 
 .hotels-grid {
@@ -151,10 +178,12 @@
 
   .search-bar {
     flex-direction: column;
-    border: none;
+    gap: 12px;
   }
 
   .search-bar .search-input {
+    width: 100%;
+    max-width: 100%;
     border: 1px solid #e8e8e8;
     margin-bottom: 0;
   }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import api from '../services/api';
 import { useLanguage } from '../context/LanguageContext';
-import { getTranslation } from '../utils/translations';
+import { getTranslation, translateHotelDescription } from '../utils/translations';
 import './Hotels.css';
 
 const Hotels = () => {
@@ -11,11 +11,11 @@ const Hotels = () => {
   const [error, setError] = useState(null);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const t = (key) => getTranslation(language, key);
 
   const city = searchParams.get('city');
   const [searchCity, setSearchCity] = useState(city || '');
-  const { language } = useLanguage();
-  const t = (key) => getTranslation(language, key);
 
   useEffect(() => {
     fetchHotels();
@@ -97,7 +97,7 @@ const Hotels = () => {
                   </p>
                   <p className="hotel-address">{hotel.address}</p>
                   {hotel.description && (
-                    <p className="hotel-description">{hotel.description}</p>
+                    <p className="hotel-description">{translateHotelDescription(hotel.description, hotel.city, language)}</p>
                   )}
                   {hotel.rating > 0 && (
                     <div className="hotel-rating">

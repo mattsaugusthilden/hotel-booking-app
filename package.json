@@ -1,7 +1,7 @@
 {
-  "name": "hotel-booking-app",
+  "name": "creepy-hotels-group",
   "version": "1.0.0",
-  "description": "Full-stack hotel room booking application",
+  "description": "Creepy Hotels Group - Book your perfect creepy hotel room",
   "main": "server/index.js",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",

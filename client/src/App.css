@@ -24,16 +24,16 @@
 }
 
 .btn-primary {
-  background-color: #1a1a1a;
+  background-color: #ff0000;
   color: #ffffff;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #ff0000;
 }
 
 .btn-primary:hover {
-  background-color: #2d2d2d;
-  border-color: #2d2d2d;
+  background-color: #000000;
+  border-color: #000000;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary {
@@ -43,8 +43,9 @@
 }
 
 .btn-secondary:hover {
-  background-color: #1a1a1a;
+  background-color: #000000;
   color: #ffffff;
+  border-color: #000000;
 }
 
 .btn-danger {

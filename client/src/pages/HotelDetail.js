@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
-import { getTranslation } from '../utils/translations';
+import { getTranslation, translateHotelDescription } from '../utils/translations';
 import './HotelDetail.css';
 
 const HotelDetail = () => {
@@ -136,7 +136,7 @@ const HotelDetail = () => {
                   <div className="hotel-rating">⭐ {hotel.rating.toFixed(1)}</div>
                 )}
                 {hotel.description && (
-                  <p className="hotel-description">{hotel.description}</p>
+                  <p className="hotel-description">{translateHotelDescription(hotel.description, hotel.city, language)}</p>
                 )}
               </div>
             </div>

@@ -1,0 +1,177 @@
+.hotels-map-container {
+  width: 100%;
+  margin: 60px 0 20px 0;
+  padding: 0 20px;
+}
+
+.hotels-map-container h2 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+}
+
+.map-loading,
+.map-error {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 16px;
+}
+
+.map-popup {
+  min-width: 200px;
+}
+
+.map-popup h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+}
+
+.map-popup p {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Leaflet popup customization */
+.leaflet-popup-content-wrapper {
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.leaflet-popup-content {
+  margin: 16px;
+}
+
+.leaflet-container {
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background-color: #1a1a1a;
+}
+
+/* Dark theme popup styling */
+.leaflet-popup-content-wrapper {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.leaflet-popup-tip {
+  background-color: #2d2d2d;
+}
+
+.map-popup h3 {
+  color: #ffffff;
+}
+
+.map-popup p {
+  color: #cccccc;
+}
+
+/* Custom marker styles */
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.marker-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #ffffff;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.marker-pin.red {
+  background-color: #ff0000 !important;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+  border-color: #ffffff !important;
+}
+
+.marker-pin.hover {
+  background-color: #ff3333 !important;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+  border-color: #ffffff !important;
+}
+
+.marker-pin::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+/* City tooltip on hover */
+.city-tooltip {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 4px !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 8px 12px !important;
+  white-space: nowrap !important;
+  font-family: 'Inter', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.city-tooltip-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.city-tooltip-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.city-tooltip:hover .city-tooltip-image {
+  transform: scale(1.1);
+}
+
+.city-tooltip-text {
+  cursor: pointer;
+}
+
+.city-tooltip:hover {
+  background-color: rgba(255, 0, 0, 0.9) !important;
+  border-color: #ff0000 !important;
+  transform: scale(1.05);
+}
+
+.city-tooltip::before {
+  border-top-color: #ffffff !important;
+}
+
+.city-tooltip:hover::before {
+  border-top-color: #ff0000 !important;
+}
+

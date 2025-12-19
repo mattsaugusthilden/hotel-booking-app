@@ -47,6 +47,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
+          <img src="/pumpkin-logo.jpeg" alt="Creepy Hotels" className="navbar-logo" />
           {t('navBrand')}
         </Link>
         <div className="navbar-menu">
@@ -67,9 +68,6 @@ const Navbar = () => {
             <>
               <Link to="/login" className="btn btn-secondary">
                 {t('navLogin')}
-              </Link>
-              <Link to="/register" className="btn btn-primary">
-                {t('navSignUp')}
               </Link>
             </>
           )}

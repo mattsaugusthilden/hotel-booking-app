@@ -356,54 +356,61 @@ app.delete('/api/bookings/:id', authenticateToken, (req, res) => {
 
 // Seed data route (for development)
 app.post('/api/seed', (req, res) => {
-  // Creepy castle images - using reliable image service
-  // Using Lorem Picsum which is guaranteed to work and provides different images per seed
-  // Each hotel gets a unique seed to ensure variety
+  // Clear existing rooms to ensure fresh data
+  db.run('DELETE FROM rooms;', (err) => {
+    if (err) {
+      console.error('Error clearing rooms:', err);
+    }
+  });
+
+  // Creepy castle images from local folder
+  // Images are stored in client/public/images/hotels/
+  // These are served as static files from the React app
   const horrorImages = [
-    'https://picsum.photos/seed/castle1/800/600',
-    'https://picsum.photos/seed/castle2/800/600',
-    'https://picsum.photos/seed/castle3/800/600',
-    'https://picsum.photos/seed/castle4/800/600',
-    'https://picsum.photos/seed/castle5/800/600',
-    'https://picsum.photos/seed/gothic1/800/600',
-    'https://picsum.photos/seed/gothic2/800/600',
-    'https://picsum.photos/seed/gothic3/800/600',
-    'https://picsum.photos/seed/gothic4/800/600',
-    'https://picsum.photos/seed/gothic5/800/600',
-    'https://picsum.photos/seed/haunted1/800/600',
-    'https://picsum.photos/seed/haunted2/800/600',
-    'https://picsum.photos/seed/haunted3/800/600',
-    'https://picsum.photos/seed/haunted4/800/600',
-    'https://picsum.photos/seed/haunted5/800/600',
-    'https://picsum.photos/seed/medieval1/800/600',
-    'https://picsum.photos/seed/medieval2/800/600',
-    'https://picsum.photos/seed/medieval3/800/600',
-    'https://picsum.photos/seed/medieval4/800/600',
-    'https://picsum.photos/seed/medieval5/800/600',
-    'https://picsum.photos/seed/dark1/800/600',
-    'https://picsum.photos/seed/dark2/800/600',
-    'https://picsum.photos/seed/dark3/800/600',
-    'https://picsum.photos/seed/dark4/800/600',
-    'https://picsum.photos/seed/dark5/800/600',
-    'https://picsum.photos/seed/fortress1/800/600',
-    'https://picsum.photos/seed/fortress2/800/600',
-    'https://picsum.photos/seed/fortress3/800/600',
-    'https://picsum.photos/seed/fortress4/800/600',
-    'https://picsum.photos/seed/fortress5/800/600',
-    'https://picsum.photos/seed/tower1/800/600',
-    'https://picsum.photos/seed/tower2/800/600',
-    'https://picsum.photos/seed/tower3/800/600',
-    'https://picsum.photos/seed/tower4/800/600',
-    'https://picsum.photos/seed/tower5/800/600',
-    'https://picsum.photos/seed/ruins1/800/600',
-    'https://picsum.photos/seed/ruins2/800/600',
-    'https://picsum.photos/seed/ruins3/800/600',
-    'https://picsum.photos/seed/ruins4/800/600',
-    'https://picsum.photos/seed/ruins5/800/600',
-    'https://picsum.photos/seed/mansion1/800/600',
-    'https://picsum.photos/seed/mansion2/800/600',
-    'https://picsum.photos/seed/mansion3/800/600',
-    'https://picsum.photos/seed/mansion4/800/600'
+    '/images/hotels/0_0 (1)2.jpeg',
+    '/images/hotels/0_0 (1)3.jpeg',
+    '/images/hotels/0_0 (1)4.jpeg',
+    '/images/hotels/0_0 (1)5.jpeg',
+    '/images/hotels/0_0 (1)6.jpeg',
+    '/images/hotels/0_0 (1)7.jpeg',
+    '/images/hotels/0_0 (1)8.jpeg',
+    '/images/hotels/0_0 (1)9.jpeg',
+    '/images/hotels/0_0 (4).jpeg',
+    '/images/hotels/0_0 (5).jpeg',
+    '/images/hotels/0_0 (6).jpeg',
+    '/images/hotels/0_0 (7).jpeg',
+    '/images/hotels/0_0 (8).jpeg',
+    '/images/hotels/0_0.jpeg',
+    '/images/hotels/0_1 (1)2.jpeg',
+    '/images/hotels/0_1 (1)3.jpeg',
+    '/images/hotels/0_1 (1)5.jpeg',
+    '/images/hotels/0_1 (1)6.jpeg',
+    '/images/hotels/0_1 (1)7.jpeg',
+    '/images/hotels/0_1 (1)8.jpeg',
+    '/images/hotels/0_1 (3).jpeg',
+    '/images/hotels/0_1 (4).jpeg',
+    '/images/hotels/0_1 (5).jpeg',
+    '/images/hotels/0_1 (6).jpeg',
+    '/images/hotels/0_1 (7).jpeg',
+    '/images/hotels/0_1.jpeg',
+    '/images/hotels/0_2 (1)2.jpeg',
+    '/images/hotels/0_2 (1)3.jpeg',
+    '/images/hotels/0_2 (1)4.jpeg',
+    '/images/hotels/0_2 (1)5.jpeg',
+    '/images/hotels/0_2 (1)6.jpeg',
+    '/images/hotels/0_2 (1)7.jpeg',
+    '/images/hotels/0_2 (1)8.jpeg',
+    '/images/hotels/0_2 (3).jpeg',
+    '/images/hotels/0_2 (4).jpeg',
+    '/images/hotels/0_2 (5).jpeg',
+    '/images/hotels/0_2 (6).jpeg',
+    '/images/hotels/0_2 (7).jpeg',
+    '/images/hotels/0_2.jpeg',
+    '/images/hotels/0_3 (1)2.jpeg',
+    '/images/hotels/0_3 (1)3.jpeg',
+    '/images/hotels/0_3 (1)4.jpeg',
+    '/images/hotels/0_3 (1)7.jpeg',
+    '/images/hotels/0_3 (1)8.jpeg'
   ];
 
   // European capitals with hotel data
@@ -454,7 +461,7 @@ app.post('/api/seed', (req, res) => {
     { city: 'Moscow', country: 'Russia', address: 'Red Square 1', name: 'Kremlin Grand Hotel' }
   ];
 
-  // Generate 20 luxurious rooms for each hotel
+  // Generate 6 luxurious rooms for each hotel
   const generateLuxuriousRooms = () => {
     const roomTypes = [
       { type: 'Deluxe Suite', basePrice: 250, occupancy: 2, amenities: 'WiFi, 4K TV, AC, Mini Bar, Room Service, City View' },
@@ -465,10 +472,10 @@ app.post('/api/seed', (req, res) => {
     ];
 
     const rooms = [];
-    for (let i = 1; i <= 20; i++) {
-      const floor = Math.floor((i - 1) / 5) + 1;
-      const roomNum = String(floor * 100 + ((i - 1) % 5) + 1);
-      const roomTypeIndex = Math.floor((i - 1) / 4) % roomTypes.length;
+    for (let i = 1; i <= 6; i++) {
+      const floor = 1;
+      const roomNum = String(100 + i);
+      const roomTypeIndex = (i - 1) % roomTypes.length;
       const roomType = roomTypes[roomTypeIndex];
       
       // Add some price variation
@@ -494,7 +501,7 @@ app.post('/api/seed', (req, res) => {
     if (!responseSent) {
       responseSent = true;
       res.json({ 
-        message: `Successfully seeded ${hotelsCount} European capital hotels, each with 20 luxurious rooms!`,
+        message: `Successfully seeded ${hotelsCount} European capital hotels, each with 6 luxurious rooms!`,
         hotels: hotelsCount,
         totalRooms: roomsCount
       });
@@ -502,21 +509,27 @@ app.post('/api/seed', (req, res) => {
   };
 
   const insertRooms = (hotelId, cityName) => {
-    const rooms = generateLuxuriousRooms();
-    let roomsInserted = 0;
-    let roomsProcessed = 0;
-
-    if (rooms.length === 0) {
-      hotelsProcessed++;
-      if (hotelsProcessed === totalHotels) {
-        sendResponse(hotelsProcessed, hotelsProcessed * 20);
+    // First, delete existing rooms for this hotel
+    db.run('DELETE FROM rooms WHERE hotel_id = ?', [hotelId], (deleteErr) => {
+      if (deleteErr) {
+        console.error(`Error deleting rooms for ${cityName}:`, deleteErr);
       }
-      return;
-    }
+      
+      const rooms = generateLuxuriousRooms();
+      let roomsInserted = 0;
+      let roomsProcessed = 0;
 
-    rooms.forEach((room, roomIndex) => {
+      if (rooms.length === 0) {
+        hotelsProcessed++;
+        if (hotelsProcessed === totalHotels) {
+          sendResponse(hotelsProcessed, hotelsProcessed * 6);
+        }
+        return;
+      }
+
+      rooms.forEach((room, roomIndex) => {
       db.run(
-        'INSERT OR IGNORE INTO rooms (hotel_id, room_number, room_type, price_per_night, max_occupancy, amenities) VALUES (?, ?, ?, ?, ?, ?)',
+        'INSERT INTO rooms (hotel_id, room_number, room_type, price_per_night, max_occupancy, amenities) VALUES (?, ?, ?, ?, ?, ?)',
         [hotelId, room.room_number, room.room_type, room.price_per_night, room.max_occupancy, room.amenities],
         function(roomErr) {
           roomsProcessed++;
@@ -531,11 +544,12 @@ app.post('/api/seed', (req, res) => {
             
             // When all hotels are processed, send response
             if (hotelsProcessed === totalHotels) {
-              sendResponse(hotelsProcessed, hotelsProcessed * 20);
+              sendResponse(hotelsProcessed, hotelsProcessed * 6);
             }
           }
         }
       );
+      });
     });
   };
 
@@ -568,7 +582,7 @@ app.post('/api/seed', (req, res) => {
               console.error(`Error inserting hotel ${capital.city}:`, insertErr);
               hotelsProcessed++;
               if (hotelsProcessed === totalHotels) {
-                sendResponse(hotelsProcessed, hotelsProcessed * 20);
+                sendResponse(hotelsProcessed, hotelsProcessed * 6);
               }
             } else {
               hotelId = this.lastID;
