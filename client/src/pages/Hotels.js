@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import api from '../services/api';
 import { useLanguage } from '../context/LanguageContext';
@@ -17,11 +17,7 @@ const Hotels = () => {
   const city = searchParams.get('city');
   const [searchCity, setSearchCity] = useState(city || '');
 
-  useEffect(() => {
-    fetchHotels();
-  }, [city]);
-
-  const fetchHotels = async () => {
+  const fetchHotels = useCallback(async () => {
     try {
       setLoading(true);
       const params = city ? { city } : {};
@@ -34,7 +30,11 @@ const Hotels = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [city]);
+
+  useEffect(() => {
+    fetchHotels();
+  }, [fetchHotels]);
 
   const handleSearch = (e) => {
     e.preventDefault();

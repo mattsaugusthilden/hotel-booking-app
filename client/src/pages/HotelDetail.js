@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import api from '../services/api';
@@ -29,17 +29,7 @@ const HotelDetail = () => {
     setCheckOut(tomorrow);
   }, []);
 
-  useEffect(() => {
-    fetchHotel();
-  }, [id]);
-
-  useEffect(() => {
-    if (checkIn && checkOut && hotel) {
-      fetchRooms();
-    }
-  }, [checkIn, checkOut, hotel]);
-
-  const fetchHotel = async () => {
+  const fetchHotel = useCallback(async () => {
     try {
       const response = await api.get(`/hotels/${id}`);
       setHotel(response.data);
@@ -47,9 +37,13 @@ const HotelDetail = () => {
       setError('Failed to load hotel details');
       console.error(err);
     }
-  };
+  }, [id]);
 
-  const fetchRooms = async () => {
+  useEffect(() => {
+    fetchHotel();
+  }, [fetchHotel]);
+
+  const fetchRooms = useCallback(async () => {
     try {
       setLoading(true);
       const params = {
@@ -66,7 +60,13 @@ const HotelDetail = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, checkIn, checkOut]);
+
+  useEffect(() => {
+    if (checkIn && checkOut && hotel) {
+      fetchRooms();
+    }
+  }, [checkIn, checkOut, hotel, fetchRooms]);
 
   const handleBook = async (room) => {
     if (!user) {
